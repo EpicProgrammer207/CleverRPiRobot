@@ -2,7 +2,7 @@ package org.jointheleague.ecolban.cleverrobot;
 
 /*********************************************************************************************
  * Vic's ultrasonic sensor running with Erik's Clever Robot for Pi
- * version 0.9, 170227
+ * version 0.9, 170227 *Psst, its me, Dong! Roblox is ____.
  **********************************************************************************************/
 import java.io.IOException;
 
@@ -29,12 +29,12 @@ public class CleverRobot extends IRobotAdapter {
 	}
 
 	private void setup() throws Exception {
-		for (int i = 0; i < 4; i++) {
-			driveDirect(1000, 1000);
-			Thread.sleep(1000);
-			driveDirect(1000, -1000);
-			Thread.sleep(377);
-		}
+//		for (int i = 0; i < 4; i++) {
+//			driveDirect(1000, 1000);
+//			Thread.sleep(1000);
+//			driveDirect(1000, -1000);
+//			Thread.sleep(377);
+//		}
 		// driveDirect(1000, 1000);
 		// Thread.sleep(1000);
 		// driveDirect(100, -150);
@@ -47,17 +47,18 @@ public class CleverRobot extends IRobotAdapter {
 		// Thread.sleep(1000);
 		// driveDirect(100, -150);
 		// Thread.sleep(1000);
-		// driveDirect(100, 100);
-		// Thread.sleep(1000);
-
-	}
+		 driveDirect(120, 120);
+		 Thread.sleep(1000);
+		
+		
+		 } 
 
 	private boolean loop() throws Exception {
-		System.out.println("LEFT SONAR: " + sonar.readSonar("left"));
-		Thread.sleep(1000);
-		System.out.println("RIGHT SONAR: " + sonar.readSonar("right"));
-		System.out.println("CENTER SONAR: " + sonar.readSonar("center"));
-
+		 if(isLightBump()){
+				isBumpLeft();
+					 Thread.sleep(666);
+					driveDirect(155,155);
+					 }
 		return true;
 	}
 
