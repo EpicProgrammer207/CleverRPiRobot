@@ -11,12 +11,10 @@ import org.jointheleague.ecolban.rpirobot.IRobotInterface;
 import org.jointheleague.ecolban.rpirobot.SimpleIRobot;
 
 public class CleverRobot extends IRobotAdapter {
-	Sonar sonar = new Sonar();
-<<<<<<< HEAD
-=======
+	// Sonar sonar = new Sonar();
+
 	private boolean tailLight;
-	Camera cam;
->>>>>>> jointheleague/master
+	// Camera cam;
 
 	public CleverRobot(IRobotInterface iRobot) {
 		super(iRobot);
@@ -34,54 +32,26 @@ public class CleverRobot extends IRobotAdapter {
 	}
 
 	private void setup() throws Exception {
-<<<<<<< HEAD
-//		for (int i = 0; i < 4; i++) {
-//			driveDirect(1000, 1000);
-//			Thread.sleep(1000);
-//			driveDirect(1000, -1000);
-//			Thread.sleep(377);
-//		}
-		// driveDirect(1000, 1000);
-		// Thread.sleep(1000);
-		// driveDirect(100, -150);
-		// Thread.sleep(1000);
-		// driveDirect(100, 100);
-		// Thread.sleep(1000);
-		/// driveDirect(100, -150);
-		// Thread.sleep(1000);
-		// driveDirect(100, 100);
-		// Thread.sleep(1000);
-		// driveDirect(100, -150);
-		// Thread.sleep(1000);
-		 driveDirect(120, 120);
-		 Thread.sleep(1000);
-		
-		
-		 } 
 
-	private boolean loop() throws Exception {
-		 if(isLightBump()){
-				isBumpLeft();
-					 Thread.sleep(666);
-					driveDirect(155,155);
-					 }
-=======
-		driveDirect(100, 100);
-		/*
-		 * Example Camera Code cam = new Camera(100,100); cam.takeRGBPicture();
-		 * System.out.println(cam.getRedPercentage(15,true)); System.out.println(cam.getBluePercentage(15,false));
-		 * System.out.println(cam.getGreenPercentage(15,false));
-		 */
 	}
 
 	private boolean loop() throws Exception {
-		System.out.println("LEFT SONAR: " + sonar.readSonar("left"));
-		Thread.sleep(1000);
-		// setTailLight(tailLight = !tailLight);
-		System.out.println("RIGHT SONAR: " + sonar.readSonar("right"));
-		System.out.println("CENTER SONAR: " + sonar.readSonar("center"));
+		readSensors(100);
 
->>>>>>> jointheleague/master
+		int[] light = getLightBumps();
+
+		if (light[5] > 0) {
+			driveDirect(-301, 301);
+			Thread.sleep(250);
+		} else {
+			driveDirect(300, 150);
+		}
+		if (light[3] > 0 && light[2] > 0) {
+			driveDirect(-300, -300);
+			Thread.sleep(500);
+			driveDirect(-300, 300);
+			Thread.sleep(300);
+		}
 		return true;
 	}
 
