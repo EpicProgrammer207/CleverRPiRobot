@@ -12,6 +12,11 @@ import org.jointheleague.ecolban.rpirobot.SimpleIRobot;
 
 public class CleverRobot extends IRobotAdapter {
 	Sonar sonar = new Sonar();
+<<<<<<< HEAD
+=======
+	private boolean tailLight;
+	Camera cam;
+>>>>>>> jointheleague/master
 
 	public CleverRobot(IRobotInterface iRobot) {
 		super(iRobot);
@@ -29,6 +34,7 @@ public class CleverRobot extends IRobotAdapter {
 	}
 
 	private void setup() throws Exception {
+<<<<<<< HEAD
 //		for (int i = 0; i < 4; i++) {
 //			driveDirect(1000, 1000);
 //			Thread.sleep(1000);
@@ -59,6 +65,23 @@ public class CleverRobot extends IRobotAdapter {
 					 Thread.sleep(666);
 					driveDirect(155,155);
 					 }
+=======
+		driveDirect(100, 100);
+		/*
+		 * Example Camera Code cam = new Camera(100,100); cam.takeRGBPicture();
+		 * System.out.println(cam.getRedPercentage(15,true)); System.out.println(cam.getBluePercentage(15,false));
+		 * System.out.println(cam.getGreenPercentage(15,false));
+		 */
+	}
+
+	private boolean loop() throws Exception {
+		System.out.println("LEFT SONAR: " + sonar.readSonar("left"));
+		Thread.sleep(1000);
+		// setTailLight(tailLight = !tailLight);
+		System.out.println("RIGHT SONAR: " + sonar.readSonar("right"));
+		System.out.println("CENTER SONAR: " + sonar.readSonar("center"));
+
+>>>>>>> jointheleague/master
 		return true;
 	}
 
