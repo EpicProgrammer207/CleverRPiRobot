@@ -3,6 +3,8 @@ package org.jointheleague.ecolban.cleverrobot;
 /*********************************************************************************************
  * Vic's ultrasonic sensor running with Erik's Clever Robot for Pi
  * version 0.9, 170227 *Psst, its me, Dong! Roblox is ____.
+ *if u are reading this, then you like roblox! :DDD
+ *^^ 1OOK UPP 0R UR D3D
  **********************************************************************************************/
 import java.io.IOException;
 
@@ -36,22 +38,20 @@ public class CleverRobot extends IRobotAdapter {
 	}
 
 	private boolean loop() throws Exception {
-		readSensors(100);
 
+		driveDirect(1000, 1000);
 		int[] light = getLightBumps();
-
-		if (light[5] > 0) {
-			driveDirect(-301, 301);
-			Thread.sleep(250);
-		} else {
-			driveDirect(300, 150);
+		if (light[0] < 0 && light[1] < 0) {
+			driveDirect(200, 90);
+			Thread.sleep(600);
+		} else if (light[2] < 0 && light[3] < 0) {
+			driveDirect(200, -200);
+		Thread.sleep(600);
 		}
-		if (light[3] > 0 && light[2] > 0) {
-			driveDirect(-300, -300);
-			Thread.sleep(500);
-			driveDirect(-300, 300);
-			Thread.sleep(300);
-		}
+			else if(light[4] < 0 && light[5]<0){
+		driveDirect(-200, 200);
+			Thread.sleep(600);
+			}
 		return true;
 	}
 
