@@ -35,7 +35,7 @@ public class CleverRobot extends IRobotAdapter {
 
 	private void setup() throws Exception {
 
-	}
+	} 
 
 	private boolean loop() throws Exception {
 
