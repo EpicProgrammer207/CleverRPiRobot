@@ -23,7 +23,7 @@ public class CleverRobot extends IRobotAdapter {
 	}
 
 	public static void main(String[] args) throws Exception {
-		System.out.println("Try event listner, rev Monday 2030");
+		System.out.println("HELLO: Try event listner, rev Monday 2030");
 		IRobotInterface base = new SimpleIRobot();
 		CleverRobot rob = new CleverRobot(base);
 		rob.setup();
@@ -39,23 +39,39 @@ public class CleverRobot extends IRobotAdapter {
 
 	boolean loop() throws Exception {
 		readSensors(100);
+		int current = getCurrent();
+		System.out.println(current);
 		int[] light = getLightBumps();
+		// Maze/goldrush Code VV
+		int infra = getInfraredByte();
+		System.out.println(infra);
 
-/*		 if (light[5] > 0) { 
-			 driveDirect(-301, 301); 
-			 Thread.sleep(250); 
-		 } 
-		 else {
-			 driveDirect(300, 150);
-		 }
-		 if (light[3] > 0 && light[2] > 0) {
-			 driveDirect(-300, -300); 
-			 Thread.sleep(500); 
-			 driveDirect(-300, 300);
-			 Thread.sleep(300);
-		 }*/
+		if (infra == 244 || infra == 246) {
+			driveDirect(200, 175);
+		} else if (infra == 248 || infra == 250) {
+			driveDirect(175, 200);
+		} else if (infra == 252 || infra == 254) {
+			driveDirect(300, 300);
+		}
+		if (light[5] > 0) {
+			driveDirect(-400, 400);
+			Thread.sleep(160);
+		} else {
+			driveDirect(500, 350);
+		}
+		if (light[3] > 0 && light[2] > 0) {
+			driveDirect(-500, -500);
+			Thread.sleep(500);
+			driveDirect(-500, 500);
+			Thread.sleep(500);
+		}
+		if (isBumpLeft() || isBumpRight()) {
+			driveDirect(-500, -500);
+			Thread.sleep(500);
+		}
 
-		driveDirect(550, 550);
+		// Drag Race Code VV
+		/* driveDirect(550, 550);
 		if (light[0] > 0 && light[1] > 0) {
 			driveDirect(200, 90);
 			Thread.sleep(750);
@@ -65,7 +81,7 @@ public class CleverRobot extends IRobotAdapter {
 		} else if (light[4] > 0 && light[5] > 0) {
 			driveDirect(-200, 200);
 			Thread.sleep(750);
-		} 
+		}*/
 		return true;
 	}
 

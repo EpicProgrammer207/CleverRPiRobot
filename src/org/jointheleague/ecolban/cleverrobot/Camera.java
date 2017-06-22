@@ -26,7 +26,7 @@ public class Camera extends RPiCamera {
 		this.height = height;
 
 	}
-
+private static Camera camera;
 	/**
 	 * this method takes a picture, using the RPi camera, as an array of RGB
 	 * values
@@ -44,6 +44,9 @@ public class Camera extends RPiCamera {
 	 * 
 	 * @return returns the array of RGB values
 	 */
+	public static void main(String[] args) {
+camera= new Camera(50,50);
+	}
 	public int[] getPixels() {
 		return pixels;
 	}
